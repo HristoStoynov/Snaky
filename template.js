@@ -22,19 +22,33 @@ function solve() {
     let score = 0;
     let add = 0;
 
+    let top = Math.floor((Math.random() * gameArea.offsetHeight) + 1);
+    let left = Math.floor((Math.random() * gameArea.offsetWidth) + 1);
+
     function onGameStart() {
         gameStart.classList.add('hide');
+
         const snake = document.createElement("div");
-        snake.style.top="200px";
-        snake.style.left="200px";
+        const apple = document.createElement("div");
+
+        apple.style.top = top + "px";
+        apple.style.left = left + "px";
+
+        snake.style.top ="200px";
+        snake.style.left = "300px";
+
         snake.classList.add("snake");
+        apple.classList.add("apple");
+
         gameArea.appendChild(snake);
+        gameArea.appendChild(apple);
 
         window.requestAnimationFrame(gameAction);
     }
 
     function gameAction() {
         const snake = document.querySelector(".snake"); 
+        const apple = document.querySelector(".apple"); 
         const scoreBoard = document.querySelector(".game-score"); 
 
         if (keys.ArrowUp && player.y - 35 > 0) {
@@ -83,6 +97,20 @@ function solve() {
 
         snake.style.top = player.y + "px";
         snake.style.left = player.x + "px"; 
+
+        let topApple = apple.style.top;
+        let topSnake = snake.style.top;
+
+        // Remove "px" from topApple and topSnake
+
+        let contrast = topApple - 200;
+
+        console.log("top apple: " + topApple);
+        console.log("top snake: " + topSnake);
+
+        if (topSnake < topApple && topSnake > topApple - 200) {
+            console.log("entered");
+        }
 
         window.requestAnimationFrame(gameAction);
     }
