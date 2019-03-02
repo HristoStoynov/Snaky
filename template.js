@@ -35,18 +35,22 @@ function solve() {
 
         if (keys.ArrowUp && player.y - 35 > 0) {
             player.y -= game.speed * game.movingMultiplier;
+            snake.style.backgroundImage = "url('Images/SnakeHeadUp.png')";
         } 
 
         if (keys.ArrowDown && player.y + snake.offsetHeight - 25 < gameArea.offsetHeight) {
             player.y += game.speed * game.movingMultiplier;
+            snake.style.backgroundImage = "url('Images/SnakeHeadDown.png')";
         }
 
         if (keys.ArrowLeft && player.x - 10 > 0) {
             player.x -= game.speed * game.movingMultiplier;
+            snake.style.backgroundImage = "url('Images/SnakeHeadLeft.png')";
         }
 
         if (keys.ArrowRight && player.x + snake.offsetWidth + 5 < gameArea.offsetWidth) {
             player.x += game.speed * game.movingMultiplier;
+            snake.style.backgroundImage = "url('Images/SnakeHeadRight.png')";
         }
 
         snake.style.top = player.y + "px";
