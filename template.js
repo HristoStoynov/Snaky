@@ -9,5 +9,10 @@ function solve() {
 
     function onGameStart() {
         gameStart.classList.add('hide');
+        const snake = document.createElement("div");
+        snake.style.top="200px";
+        snake.style.left="200px";
+        snake.classList.add("snake");
+        gameArea.appendChild(snake);
     }
 }
