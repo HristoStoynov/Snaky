@@ -29,3 +29,11 @@ body {
 .hide {
     display: none;
 }
+
+.snake{
+    background-image:url(Images/SnakeHeadUp.png);
+    position:absolute;
+    background-size: cover;
+    width: 100px;
+    height: 100px;
+}
