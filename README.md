@@ -1,2 +1,7 @@
 # Snaky
-Snaky is a game made with Vanilla JavaScript and other. It is like the old game of Snake!
+Snaky is a game made with Vanilla JavaScript and others. It is like the old game of Snake!
+
+Play, enjoy and let the force be with you! :)
+
+Revolution!
+Napoleon Bonaparte
