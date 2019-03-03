@@ -45,3 +45,13 @@ body {
     width: 50px;
     height: 50px;
 }
+
+.gameOver{
+    position:absolute;
+    width: 50%;
+    left: 25%;
+    top: 100px;
+    text-align: center;
+    background-color: greenyellow;
+    padding: 30px;
+}
