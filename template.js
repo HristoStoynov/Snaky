@@ -23,6 +23,8 @@ function solve() {
     let sec = 0;
     let currTime = 30;
 
+    let checkNewGame = false;
+
     let top = Math.floor((Math.random() * ((gameArea.offsetHeight - (gameArea.offsetHeight * 0.2)) + 100)));
     let left = Math.floor((Math.random() * ((gameArea.offsetWidth - (gameArea.offsetWidth * 0.2)) + 100)));
 
@@ -180,7 +182,7 @@ function solve() {
             timer.textContent = currTime;
         }
 
-        var delayInMilliseconds = 30000; 
+        var delayInMilliseconds = 3000; 
         
         setTimeout(function() {
             function onKeyDown(e) {
@@ -203,9 +205,13 @@ function solve() {
             document.body.appendChild(PlayAgain);
             PlayAgain.classList.add("playAgain");
             PlayAgain.innerHTML= "Play Again!";
+            document.addEventListener('click', newGame);
         }, delayInMilliseconds);
-
-
+        
+        function newGame() {
+            console.log("new game");
+        }
+        
         window.requestAnimationFrame(gameAction);
     }
 
