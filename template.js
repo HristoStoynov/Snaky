@@ -199,6 +199,10 @@ function solve() {
             DeadNote.innerHTML=`The End! Score: ${FinalScore}`;
             document.addEventListener('keydown', onKeyDown);
             document.addEventListener('keyup', onKeyUp);
+            const PlayAgain = document.createElement("div");
+            document.body.appendChild(PlayAgain);
+            PlayAgain.classList.add("playAgain");
+            PlayAgain.innerHTML= "Play Again!";
         }, delayInMilliseconds);
 
 
