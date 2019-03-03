@@ -178,8 +178,6 @@ function solve() {
         if (sec % 59 === 0) {
             currTime--;
             timer.textContent = currTime;
-            
-            console.log(currTime);
         }
 
         var delayInMilliseconds = 30000; 
