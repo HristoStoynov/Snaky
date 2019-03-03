@@ -15,7 +15,7 @@ function solve() {
         y: 200
     }
     let game = {
-        speed: 30,
+        speed: 2,
         movingMultiplier: 4
     };
 
@@ -174,6 +174,12 @@ function solve() {
         var delayInMilliseconds = 30000; 
         
         setTimeout(function() {
+            function onKeyDown(e) {
+                keys[e.code] = false;
+            }
+            function onKeyUp(e) {
+                keys[e.code] = false;
+            }
             const DeadNote = document.createElement("div");
             document.body.appendChild(DeadNote);
             DeadNote.classList.add("gameOver");
@@ -183,12 +189,6 @@ function solve() {
             DeadNote.innerHTML=`The End! Score: ${FinalScore}`;
             document.addEventListener('keydown', onKeyDown);
             document.addEventListener('keyup', onKeyUp);
-            function onKeyDown(e) {
-                keys[e.code] = false;
-            }
-            function onKeyUp(e) {
-                keys[e.code] = false;
-            }
         }, delayInMilliseconds);
 
         window.requestAnimationFrame(gameAction);
