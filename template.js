@@ -1,9 +1,7 @@
 function solve() {
     
-    const gameScore = document.querySelector(".game-score"); 
     const gameStart = document.querySelector(".game-start");
     const gameArea = document.querySelector(".game-area");
-    const gameOver = document.querySelector(".game-over");
     
     gameStart.addEventListener('click', onGameStart);
     document.addEventListener('keydown', onKeyDown);
@@ -21,6 +19,9 @@ function solve() {
 
     let score = 0;
     let add = 0;
+
+    let sec = 0;
+    let currTime = 30;
 
     let top = Math.floor((Math.random() * ((gameArea.offsetHeight - (gameArea.offsetHeight * 0.2)) + 100)));
     let left = Math.floor((Math.random() * ((gameArea.offsetWidth - (gameArea.offsetWidth * 0.2)) + 100)));
@@ -50,6 +51,7 @@ function solve() {
         const snake = document.querySelector(".snake"); 
         const apple = document.querySelector(".apple"); 
         const scoreBoard = document.querySelector(".score"); 
+        const timer = document.querySelector("#seconds-heading"); 
 
         if (keys.ArrowUp && player.y - 35 > 0) {
             player.y -= game.speed * game.movingMultiplier;
@@ -171,6 +173,15 @@ function solve() {
                 scoreBoard.innerHTML = add;
         }  
 
+        sec++;
+
+        if (sec % 59 === 0) {
+            currTime--;
+            timer.textContent = currTime;
+            
+            console.log(currTime);
+        }
+
         var delayInMilliseconds = 30000; 
         
         setTimeout(function() {
@@ -185,11 +196,13 @@ function solve() {
             DeadNote.classList.add("gameOver");
             snake.style.display="none";
             apple.style.display="none";
+            timer.style.display="none";
             const FinalScore= add;
             DeadNote.innerHTML=`The End! Score: ${FinalScore}`;
             document.addEventListener('keydown', onKeyDown);
             document.addEventListener('keyup', onKeyUp);
         }, delayInMilliseconds);
+
 
         window.requestAnimationFrame(gameAction);
     }

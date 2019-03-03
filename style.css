@@ -55,3 +55,12 @@ body {
     background-color: greenyellow;
     padding: 30px;
 }
+
+.timer {
+    position:absolute;
+    background-size: cover;
+    top: 30px;
+    left: 20px;
+    float: right;
+    color: darkblue;
+}
