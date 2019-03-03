@@ -171,6 +171,18 @@ function solve() {
                 scoreBoard.innerHTML = add;
         }  
 
+        var delayInMilliseconds = 4000; 
+        
+        setTimeout(function() {
+            const DeadNote = document.createElement("div");
+            document.body.appendChild(DeadNote);
+            DeadNote.classList.add("gameOver");
+            snake.style.display="none";
+            apple.style.display="none";
+            const FinalScore= add;
+            DeadNote.innerHTML=`The End! Score: ${FinalScore}`;
+        }, delayInMilliseconds);
+
         window.requestAnimationFrame(gameAction);
     }
 
