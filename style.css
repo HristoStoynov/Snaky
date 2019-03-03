@@ -72,3 +72,13 @@ body {
     float: right;
     color: darkblue;
 }
+
+.playAgain{
+    position:absolute;
+    width: 50%;
+    left: 25%;
+    top: 200px;
+    text-align: center;
+    background-color: greenyellow;
+    padding: 30px; 
+}
