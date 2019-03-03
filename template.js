@@ -15,7 +15,7 @@ function solve() {
         y: 200
     }
     let game = {
-        speed: 2,
+        speed: 30,
         movingMultiplier: 4
     };
 
@@ -158,7 +158,7 @@ function solve() {
                 left = Math.floor((Math.random() * ((gameArea.offsetWidth - (gameArea.offsetWidth * 0.2)) + 100)));
                 apple.style.top = top + "px";
                 apple.style.left = left + "px";
-                add = add + 20; 
+                add = add + 50; 
                 scoreBoard.innerHTML = add;
         } else if (leftSnakeNumber < leftAppleNumber && leftSnakeNumber > leftAppleNumber - 50 &&
             topSnakeNumber > topAppleNumber - 70 && topSnakeNumber < topAppleNumber + 40 &&
@@ -167,11 +167,11 @@ function solve() {
                 left = Math.floor((Math.random() * ((gameArea.offsetWidth - (gameArea.offsetWidth * 0.2)) + 100)));
                 apple.style.top = top + "px";
                 apple.style.left = left + "px";
-                add = add + 20; 
+                add = add + 50; 
                 scoreBoard.innerHTML = add;
         }  
 
-        var delayInMilliseconds = 4000; 
+        var delayInMilliseconds = 30000; 
         
         setTimeout(function() {
             const DeadNote = document.createElement("div");
@@ -181,6 +181,14 @@ function solve() {
             apple.style.display="none";
             const FinalScore= add;
             DeadNote.innerHTML=`The End! Score: ${FinalScore}`;
+            document.addEventListener('keydown', onKeyDown);
+            document.addEventListener('keyup', onKeyUp);
+            function onKeyDown(e) {
+                keys[e.code] = false;
+            }
+            function onKeyUp(e) {
+                keys[e.code] = false;
+            }
         }, delayInMilliseconds);
 
         window.requestAnimationFrame(gameAction);
