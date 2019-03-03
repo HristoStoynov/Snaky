@@ -100,17 +100,69 @@ function solve() {
 
         let topApple = apple.style.top;
         let topSnake = snake.style.top;
+        let leftApple = apple.style.left;
+        let leftSnake = snake.style.left;
 
-        // Remove "px" from topApple and topSnake
+        let topAppleNumber = "";
+        let topSnakeNumber = "";
+        let leftAppleNumber = "";
+        let leftSnakeNumber = "";
 
-        let contrast = topApple - 200;
-
-        console.log("top apple: " + topApple);
-        console.log("top snake: " + topSnake);
-
-        if (topSnake < topApple && topSnake > topApple - 200) {
-            console.log("entered");
+        for (i = 0; i < topApple.length; i++) {
+            let currChar = topApple[i];
+            if (currChar !== "p") {
+                topAppleNumber += currChar;
+            } else {
+                break;
+            }
         }
+
+        for (i = 0; i < topSnake.length; i++) {
+            let currChar = topSnake[i];
+            if (currChar !== "p") {
+                topSnakeNumber += currChar;
+            } else {
+                break;
+            }
+        }
+
+        for (i = 0; i < leftApple.length; i++) {
+            let currChar = leftApple[i];
+            if (currChar !== "p") {
+                leftAppleNumber += currChar;
+            } else {
+                break;
+            }
+        }
+
+        for (i = 0; i < leftSnake.length; i++) {
+            let currChar = leftSnake[i];
+            if (currChar !== "p") {
+                leftSnakeNumber += currChar;
+            } else {
+                break;
+            }
+        }
+
+        topAppleNumber = Number(topAppleNumber);
+        topSnakeNumber = Number(topSnakeNumber);
+        leftAppleNumber = Number(leftAppleNumber);
+        leftSnakeNumber = Number(leftSnakeNumber);
+
+        console.log("Apple Left : " + leftAppleNumber); //601
+        console.log("Snake Left : " + leftSnakeNumber); //504
+
+        let check = snake.style.backgroundImage;
+
+        if (topSnakeNumber < topAppleNumber && topSnakeNumber > topAppleNumber - 50 &&
+            leftSnakeNumber > leftAppleNumber - 70 && leftSnakeNumber < leftAppleNumber + 40 &&
+            (check === `url("Images/SnakeHeadDown.png")` || check === `url("Images/SnakeHeadUp.png")`) ) {
+            apple.classList.add("hide");
+        } else if (leftSnakeNumber < leftAppleNumber && leftSnakeNumber > leftAppleNumber - 50 &&
+            topSnakeNumber > topAppleNumber - 70 && topSnakeNumber < topAppleNumber + 40 &&
+            (check === `url("Images/SnakeHeadLeft.png")` || check === `url("Images/SnakeHeadRight.png")`) ) {
+            apple.classList.add("hide");
+        }  
 
         window.requestAnimationFrame(gameAction);
     }
