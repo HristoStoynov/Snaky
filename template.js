@@ -22,8 +22,8 @@ function solve() {
     let score = 0;
     let add = 0;
 
-    let top = Math.floor((Math.random() * gameArea.offsetHeight) + 1);
-    let left = Math.floor((Math.random() * gameArea.offsetWidth) + 1);
+    let top = Math.floor((Math.random() * ((gameArea.offsetHeight - (gameArea.offsetHeight * 0.2)) + 100)));
+    let left = Math.floor((Math.random() * ((gameArea.offsetWidth - (gameArea.offsetWidth * 0.2)) + 100)));
 
     function onGameStart() {
         gameStart.classList.add('hide');
@@ -49,7 +49,7 @@ function solve() {
     function gameAction() {
         const snake = document.querySelector(".snake"); 
         const apple = document.querySelector(".apple"); 
-        const scoreBoard = document.querySelector(".game-score"); 
+        const scoreBoard = document.querySelector(".score"); 
 
         if (keys.ArrowUp && player.y - 35 > 0) {
             player.y -= game.speed * game.movingMultiplier;
@@ -149,19 +149,26 @@ function solve() {
         leftAppleNumber = Number(leftAppleNumber);
         leftSnakeNumber = Number(leftSnakeNumber);
 
-        console.log("Apple Left : " + leftAppleNumber); //601
-        console.log("Snake Left : " + leftSnakeNumber); //504
-
         let check = snake.style.backgroundImage;
 
         if (topSnakeNumber < topAppleNumber && topSnakeNumber > topAppleNumber - 50 &&
             leftSnakeNumber > leftAppleNumber - 70 && leftSnakeNumber < leftAppleNumber + 40 &&
             (check === `url("Images/SnakeHeadDown.png")` || check === `url("Images/SnakeHeadUp.png")`) ) {
-            apple.classList.add("hide");
+                top = Math.floor((Math.random() * ((gameArea.offsetHeight - (gameArea.offsetHeight * 0.2)) + 100)));
+                left = Math.floor((Math.random() * ((gameArea.offsetWidth - (gameArea.offsetWidth * 0.2)) + 100)));
+                apple.style.top = top + "px";
+                apple.style.left = left + "px";
+                add = add + 20; 
+                scoreBoard.innerHTML = add;
         } else if (leftSnakeNumber < leftAppleNumber && leftSnakeNumber > leftAppleNumber - 50 &&
             topSnakeNumber > topAppleNumber - 70 && topSnakeNumber < topAppleNumber + 40 &&
             (check === `url("Images/SnakeHeadLeft.png")` || check === `url("Images/SnakeHeadRight.png")`) ) {
-            apple.classList.add("hide");
+                top = Math.floor((Math.random() * ((gameArea.offsetHeight - (gameArea.offsetHeight * 0.2)) + 100)));
+                left = Math.floor((Math.random() * ((gameArea.offsetWidth - (gameArea.offsetWidth * 0.2)) + 100)));
+                apple.style.top = top + "px";
+                apple.style.left = left + "px";
+                add = add + 20; 
+                scoreBoard.innerHTML = add;
         }  
 
         window.requestAnimationFrame(gameAction);
