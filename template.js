@@ -179,10 +179,14 @@ function solve() {
 
         if (sec % 59 === 0) {
             currTime--;
+            if (currTime <= 10) {
+                timer.style.color = "red";
+            }
+
             timer.textContent = currTime;
         }
 
-        var delayInMilliseconds = 3000; 
+        var delayInMilliseconds = 30000; 
         
         setTimeout(function() {
             function onKeyDown(e) {
@@ -204,13 +208,9 @@ function solve() {
             const PlayAgain = document.createElement("div");
             document.body.appendChild(PlayAgain);
             PlayAgain.classList.add("playAgain");
-            PlayAgain.innerHTML= "Play Again!";
-            document.addEventListener('click', newGame);
+            PlayAgain.textContent = "Refresh the page to play again :)))";
         }, delayInMilliseconds);
         
-        function newGame() {
-            console.log("new game");
-        }
         
         window.requestAnimationFrame(gameAction);
     }
